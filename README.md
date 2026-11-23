@@ -1,74 +1,88 @@
 # PixBankCore
 
-**Projeto de estudo em Java para modelagem de um sistema bancário.**
+Projeto de estudo em **Java** voltado à construção de um núcleo bancário, com foco em **Programação Orientada a Objetos**, encapsulamento e regras básicas de movimentação financeira.
 
-O PixBankCore está em desenvolvimento e tem como objetivo aplicar conceitos de Programação Orientada a Objetos na construção de uma aplicação bancária, evoluindo a partir da modelagem de contas e transações.
+<p align="center">
+  <strong>Em desenvolvimento</strong>
+</p>
 
-## Estado do projeto
+## Visão geral
 
-<div align="center">
+O PixBankCore está sendo desenvolvido de forma incremental. A implementação atual concentra-se na entidade de conta bancária, no controle de saldo e nas primeiras operações financeiras.
 
-**Em desenvolvimento · Etapa inicial**
+## Funcionalidades
 
-</div>
-
-No estágio atual, o projeto possui a estrutura inicial da classe `ContaBancaria`. As operações bancárias ainda não estão implementadas.
+| Recurso | Estado |
+|---|---|
+| Cadastro de conta por titular e número | Implementado |
+| Consulta de titular, número e saldo | Implementado |
+| Alteração do nome do titular | Implementado |
+| Depósito com validação de valor positivo | Implementado |
+| Saque com validação de valor e saldo disponível | Implementado |
+| Transferência entre contas | Em desenvolvimento |
+| Registro e histórico de transações | Planejado |
+| Operações Pix | Planejado |
 
 ## Tecnologias
 
-- Java
-- `BigDecimal` para representação de valores monetários
+- **Java**
+- **BigDecimal** para representação e operações com valores monetários
 
-## Estrutura
+## Organização do projeto
 
 ```text
-src/
-├── Main.java
-└── model/
-    ├── ContaBancaria.java
-    └── Transacao.java
+PinkPixCore/
+├── README.md
+└── PixBankCore/
+    └── src/
+        ├── Main.java
+        └── model/
+            ├── ContaBancaria.java
+            └── Transacao.java
 ```
 
-| Componente | Responsabilidade atual |
-|---|---|
-| `Main` | Ponto de entrada da aplicação; ainda sem lógica implementada. |
-| `ContaBancaria` | Estrutura inicial da conta, com titular, número e saldo inicial. |
-| `Transacao` | Arquivo reservado para a futura modelagem de transações. |
+### Componentes principais
 
-## Modelo atual
+- **Main:** demonstra a criação de uma conta, a leitura de seus dados e a alteração do nome do titular.
+- **ContaBancaria:** mantém os dados da conta, inicializa o saldo em zero e implementa os métodos de consulta, alteração do titular, depósito e saque.
+- **Transacao:** arquivo reservado para a futura implementação do modelo de transações.
 
-A classe `ContaBancaria` recebe o nome do titular e o número da conta pelo construtor. O saldo é inicializado em zero usando `BigDecimal.ZERO`.
+## Executar localmente
 
-```java
-ContaBancaria conta = new ContaBancaria("Maria", 1001);
+É necessário ter o **JDK** instalado. No terminal, a partir da raiz do repositório, acesse a pasta do projeto:
+
+```bash
+cd PixBankCore
 ```
 
-## Executar
-
-Com o JDK instalado, execute na raiz do projeto:
+Compile os arquivos:
 
 ```bash
 mkdir -p out
 javac -d out src/Main.java src/model/*.java
+```
+
+Execute a aplicação:
+
+```bash
 java -cp out Main
 ```
 
-O programa ainda não apresenta saída no terminal, pois o método `main` está vazio.
+Atualmente, a execução demonstra a criação de uma conta e a alteração do nome do titular. Os métodos de depósito e saque já existem na classe, mas ainda não são chamados pelo fluxo principal.
 
-## Planejamento
+## Próximas etapas
 
-- [ ] Definir os atributos e o comportamento de `Transacao`.
-- [ ] Implementar operações de depósito e saque.
-- [ ] Criar transferências entre contas.
-- [ ] Desenvolver o fluxo de envio e recebimento via Pix.
-- [ ] Registrar e consultar o histórico de transações.
-- [ ] Aplicar regras de validação e testes.
-- [ ] Implementar persistência de dados.
+- [ ] Implementar a transferência entre contas.
+- [ ] Definir e implementar a estrutura de `Transacao`.
+- [ ] Integrar as operações ao fluxo principal da aplicação.
+- [ ] Desenvolver o histórico de movimentações.
+- [ ] Implementar as operações Pix.
+- [ ] Ampliar as validações e criar testes.
 
-## Objetivo de desenvolvimento
+## Objetivo técnico
 
-Construir o projeto por etapas, mantendo as responsabilidades das classes claras e tratando valores financeiros com precisão. Os itens do planejamento representam trabalho futuro, não funcionalidades disponíveis nesta versão.
+Consolidar conceitos de encapsulamento e responsabilidade de classes, evoluindo para operações bancárias consistentes e rastreáveis. O escopo será ampliado conforme cada etapa for implementada.
 
 ---
 
-<sub>Projeto educacional em desenvolvimento.</sub>
+<sub>Projeto educacional independente · Em desenvolvimento</sub>
