@@ -46,7 +46,17 @@ public class ContaBancaria {
     }
 
     public void transferir(BigDecimal valor, ContaBancaria destinatario){
-
+        if(this == destinatario && this.numeroConta == destinatario.getNumeroConta()){
+            System.out.println(" Não foi possível realizar essa transferência. ");
+        }
+        else if(valor != null && valor.compareTo(BigDecimal.ZERO) > 0 && this.saldo.compareTo(valor) >= 0 && destinatario != null){
+            this.saldo = this.saldo.subtract(valor);
+            destinatario.depositar(valor);
+            System.out.println(" Sua transferência no valor de R$ " + valor + "foi realizada. ");
+        }
+        else {
+            System.out.println(" Não foi possível realizar sua transferência ");
+        }
     }
 
 };
