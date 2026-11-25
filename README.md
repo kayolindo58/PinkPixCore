@@ -1,34 +1,34 @@
 # PixBankCore
 
-Projeto de estudo em **Java** voltado à construção de um núcleo bancário, com foco em **Programação Orientada a Objetos**, encapsulamento e regras básicas de movimentação financeira.
+Um projeto em **Java** para desenvolver, por etapas, a lógica central de um sistema bancário. O foco está na aplicação de conceitos de **Programação Orientada a Objetos**, encapsulamento e manipulação segura de valores monetários.
 
-<p align="center">
-  <strong>Em desenvolvimento</strong>
-</p>
+**Status:** em desenvolvimento
 
-## Visão geral
+## Sobre o projeto
 
-O PixBankCore está sendo desenvolvido de forma incremental. A implementação atual concentra-se na entidade de conta bancária, no controle de saldo e nas primeiras operações financeiras.
+O PixBankCore começou com a modelagem de uma conta bancária e está evoluindo para incluir operações financeiras e gerenciamento de transações. A proposta é construir cada parte com regras explícitas, código organizado e validações consistentes.
 
 ## Funcionalidades
 
-| Recurso | Estado |
+| Funcionalidade | Situação |
 |---|---|
-| Cadastro de conta por titular e número | Implementado |
-| Consulta de titular, número e saldo | Implementado |
-| Alteração do nome do titular | Implementado |
+| Criação de conta com titular e número | Implementada |
+| Consulta de titular, número e saldo | Implementada |
+| Alteração do titular | Implementada |
 | Depósito com validação de valor positivo | Implementado |
 | Saque com validação de valor e saldo disponível | Implementado |
-| Transferência entre contas | Em desenvolvimento |
-| Registro e histórico de transações | Planejado |
+| Transferência entre contas com validação básica | Implementada |
+| Histórico de transações | Planejado |
 | Operações Pix | Planejado |
 
-## Tecnologias
+## Tecnologias e conceitos
 
-- **Java**
-- **BigDecimal** para representação e operações com valores monetários
+- **Java** — linguagem do projeto.
+- **`BigDecimal`** — representação e operações com valores monetários.
+- **Encapsulamento** — atributos privados e acesso por métodos públicos.
+- **Validação de regras de negócio** — verificações de valores e saldo antes das movimentações.
 
-## Organização do projeto
+## Estrutura
 
 ```text
 PinkPixCore/
@@ -41,48 +41,49 @@ PinkPixCore/
             └── Transacao.java
 ```
 
-### Componentes principais
+| Arquivo | Responsabilidade |
+|---|---|
+| `Main.java` | Ponto de entrada e demonstração básica da criação e consulta de uma conta. |
+| `ContaBancaria.java` | Dados da conta, saldo e operações de depósito, saque e transferência. |
+| `Transacao.java` | Estrutura reservada para a futura implementação do registro de transações. |
 
-- **Main:** demonstra a criação de uma conta, a leitura de seus dados e a alteração do nome do titular.
-- **ContaBancaria:** mantém os dados da conta, inicializa o saldo em zero e implementa os métodos de consulta, alteração do titular, depósito e saque.
-- **Transacao:** arquivo reservado para a futura implementação do modelo de transações.
+## Executar
 
-## Executar localmente
+Pré-requisito: **JDK** instalado e comandos `java` e `javac` disponíveis no terminal.
 
-É necessário ter o **JDK** instalado. No terminal, a partir da raiz do repositório, acesse a pasta do projeto:
+A partir da raiz do repositório, entre na pasta do projeto:
 
 ```bash
 cd PixBankCore
 ```
 
-Compile os arquivos:
+Compile as classes:
 
 ```bash
-mkdir -p out
-javac -d out src/Main.java src/model/*.java
+mkdir out
+javac -d out src/Main.java src/model/ContaBancaria.java
 ```
 
-Execute a aplicação:
+Execute:
 
 ```bash
 java -cp out Main
 ```
 
-Atualmente, a execução demonstra a criação de uma conta e a alteração do nome do titular. Os métodos de depósito e saque já existem na classe, mas ainda não são chamados pelo fluxo principal.
+O programa principal demonstra a criação de uma conta, a consulta de seus dados e a alteração do titular. Depósito, saque e transferência estão implementados na classe `ContaBancaria`, mas ainda não fazem parte do fluxo demonstrado pelo `Main`.
 
-## Próximas etapas
+## Pontos a evoluir
 
-- [ ] Implementar a transferência entre contas.
-- [ ] Definir e implementar a estrutura de `Transacao`.
-- [ ] Integrar as operações ao fluxo principal da aplicação.
-- [ ] Desenvolver o histórico de movimentações.
-- [ ] Implementar as operações Pix.
-- [ ] Ampliar as validações e criar testes.
+- [ ] Integrar depósito, saque e transferência ao fluxo principal.
+- [ ] Implementar o modelo `Transacao` e o histórico de movimentações.
+- [ ] Reforçar as validações da transferência, incluindo a identificação inequívoca das contas.
+- [ ] Criar testes para operações válidas e cenários de erro.
+- [ ] Desenvolver as operações Pix.
 
-## Objetivo técnico
+## Observação sobre o estágio atual
 
-Consolidar conceitos de encapsulamento e responsabilidade de classes, evoluindo para operações bancárias consistentes e rastreáveis. O escopo será ampliado conforme cada etapa for implementada.
+A transferência possui validações básicas de valor e saldo e impede a transferência para a mesma instância de conta. A identificação de contas distintas com o mesmo número ainda precisa ser tratada. O projeto não possui persistência de dados nem histórico de transações nesta etapa.
 
 ---
 
-<sub>Projeto educacional independente · Em desenvolvimento</sub>
+<sub>Projeto educacional independente · Java</sub>
