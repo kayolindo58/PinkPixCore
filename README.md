@@ -1,81 +1,88 @@
 # PixBankCore
 
-Núcleo de um sistema bancário em **Java**, com foco em simular operações de conta e transações (incluindo Pix). O projeto está em fase inicial e vai crescer aos poucos.
+Projeto de estudo em **Java** voltado à construção de um núcleo bancário, com foco em **Programação Orientada a Objetos**, encapsulamento e regras básicas de movimentação financeira.
 
-> 🚧 **Status:** em desenvolvimento. Hoje existe apenas o modelo de conta; as demais funcionalidades estão no [roadmap](#roadmap).
+<p align="center">
+  <strong>Em desenvolvimento</strong>
+</p>
+
+## Visão geral
+
+O PixBankCore está sendo desenvolvido de forma incremental. A implementação atual concentra-se na entidade de conta bancária, no controle de saldo e nas primeiras operações financeiras.
+
+## Funcionalidades
+
+| Recurso | Estado |
+|---|---|
+| Cadastro de conta por titular e número | Implementado |
+| Consulta de titular, número e saldo | Implementado |
+| Alteração do nome do titular | Implementado |
+| Depósito com validação de valor positivo | Implementado |
+| Saque com validação de valor e saldo disponível | Implementado |
+| Transferência entre contas | Em desenvolvimento |
+| Registro e histórico de transações | Planejado |
+| Operações Pix | Planejado |
 
 ## Tecnologias
 
-- Java (JDK 17 ou superior recomendado)
-- `java.math.BigDecimal` para valores monetários (evita erros de ponto flutuante)
-- VS Code com Extension Pack for Java (configuração em `.vscode/`)
+- **Java**
+- **BigDecimal** para representação e operações com valores monetários
 
-## Estrutura do projeto
+## Organização do projeto
 
-```
-PixBankCore/
-├── .vscode/
-│   └── settings.json
-├── src/
-│   ├── Main.java                  # Ponto de entrada da aplicação
-│   └── model/
-│       ├── ContaBancaria.java     # Entidade de conta bancária
-│       └── Transacao.java         # Entidade de transação (a implementar)
-└── out/                           # Arquivos compilados (gerado)
+```text
+PinkPixCore/
+├── README.md
+└── PixBankCore/
+    └── src/
+        ├── Main.java
+        └── model/
+            ├── ContaBancaria.java
+            └── Transacao.java
 ```
 
-## Funcionalidades atuais
+### Componentes principais
 
-### `ContaBancaria`
+- **Main:** demonstra a criação de uma conta, a leitura de seus dados e a alteração do nome do titular.
+- **ContaBancaria:** mantém os dados da conta, inicializa o saldo em zero e implementa os métodos de consulta, alteração do titular, depósito e saque.
+- **Transacao:** arquivo reservado para a futura implementação do modelo de transações.
 
-Representa uma conta com:
+## Executar localmente
 
-| Campo          | Tipo         | Descrição                          |
-|----------------|--------------|------------------------------------|
-| `nome`         | `String`     | Nome do titular                    |
-| `numeroConta`  | `int`        | Número da conta                    |
-| `saldoInicial` | `BigDecimal` | Saldo da conta, começa em `0`      |
-
-Exemplo de criação:
-
-```java
-ContaBancaria conta = new ContaBancaria("Maria", 1001);
-```
-
-## Como executar
-
-Na raiz do projeto (`PixBankCore/`):
+É necessário ter o **JDK** instalado. No terminal, a partir da raiz do repositório, acesse a pasta do projeto:
 
 ```bash
-# Compilar
-javac -d out src/Main.java src/model/*.java
+cd PixBankCore
+```
 
-# Executar
+Compile os arquivos:
+
+```bash
+mkdir -p out
+javac -d out src/Main.java src/model/*.java
+```
+
+Execute a aplicação:
+
+```bash
 java -cp out Main
 ```
 
-Ou abra a pasta no VS Code e execute `Main.java` pelo botão **Run**.
+Atualmente, a execução demonstra a criação de uma conta e a alteração do nome do titular. Os métodos de depósito e saque já existem na classe, mas ainda não são chamados pelo fluxo principal.
 
-> Por enquanto o `main` está vazio, então a execução não imprime nada.
+## Próximas etapas
 
-## Roadmap
+- [ ] Implementar a transferência entre contas.
+- [ ] Definir e implementar a estrutura de `Transacao`.
+- [ ] Integrar as operações ao fluxo principal da aplicação.
+- [ ] Desenvolver o histórico de movimentações.
+- [ ] Implementar as operações Pix.
+- [ ] Ampliar as validações e criar testes.
 
-- [ ] Implementar a classe `Transacao` (tipo, valor, data/hora, origem e destino)
-- [ ] Depósito e saque
-- [ ] Transferência entre contas
-- [ ] Pix (chaves, envio e recebimento)
-- [ ] Histórico/extrato de transações
-- [ ] Validações (saldo insuficiente, valores inválidos)
-- [ ] Menu interativo no `Main`
-- [ ] Testes unitários
-- [ ] Persistência de dados
+## Objetivo técnico
 
-## Como contribuir / adicionar funções
+Consolidar conceitos de encapsulamento e responsabilidade de classes, evoluindo para operações bancárias consistentes e rastreáveis. O escopo será ampliado conforme cada etapa for implementada.
 
-1. Mantenha as entidades em `src/model/`.
-2. Use `BigDecimal` para qualquer valor monetário.
-3. Atualize este README (seções *Funcionalidades atuais* e *Roadmap*) a cada nova função.
+---
 
-## Licença
-
-A definir.
+<sub>Projeto educacional independente · Em desenvolvimento</sub>
